@@ -1,0 +1,24 @@
+# Ignore venv (Python virtual environment)
+venv/
+
+# Ignore environment variables file (e.g., .env)
+.env
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+*.pyc
+
+# Ignore compiled Python files
+__pycache__/
+
+# Ignore local configuration files
+config.json
+
+# Ignore logs and temporary files
+logs/
+temp/
+*.log
+
+# Ignore dependencies (use requirements.txt or similar for dependency management)
+node_modules/
