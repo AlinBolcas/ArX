@@ -1,0 +1,125 @@
+{
+    "Any": ["Any"],
+    "Arts & Photography": [
+      "Architecture",
+      "Decorative Arts & Design",
+      "Drawing",
+      "Fashion",
+      "Graphic Design",
+      "Music",
+      "Painting",
+      "Photography & Video",
+      "Sculpture"
+    ],
+    "Business & Money": [
+      "Accounting",
+      "Business Culture",
+      "Economics",
+      "Insurance",
+      "Investing",
+      "Job Hunting & Careers",
+      "Management & Leadership",
+      "Marketing & Sales",
+      "Personal Finance",
+      "Real Estate",
+      "Skills",
+      "Small Business & Entrepreneurship",
+      "Taxation"
+    ],
+    "Children's Books": [
+      "Activities, Crafts & Games",
+      "Arts, Music & Photography"
+    ],
+    "Computers & Technology": [
+      "Internet & Social Media",
+      "Programming Languages",
+      "Web Development & Design"
+    ],
+    "Cookbooks, Food & Wine": [
+      "Beverages & Wine",
+      "Canning & Preserving",
+      "Kitchen Appliances",
+      "Regional & International",
+      "Special Diet",
+      "Vegetarian & Vegan"
+    ],
+    "Crafts, Hobbies & Home": [
+      "Coloring Books for Grown-Ups",
+      "Crafts & Hobbies",
+      "Gardening & Landscape Design",
+      "Home Improvement & Design",
+      "Needlecrafts & Textile Crafts",
+      "Pets & Animal Care",
+      "Sustainable Living"
+    ],
+    "Education & Teaching": [
+      "Schools & Teaching",
+      "Studying & Workbooks",
+      "Test Preparation"
+    ],
+    "Health, Fitness & Dieting": [
+      "Addiction & Recovery",
+      "Aging",
+      "Alternative Medicine",
+      "Beauty, Grooming, & Style",
+      "Diets & Weight Loss",
+      "Diseases & Physical Ailments",
+      "Exercise & Fitness",
+      "Men's Health",
+      "Mental Health",
+      "Nutrition",
+      "Psychology & Counseling",
+      "Safety & First Aid",
+      "Women's Health"
+    ],
+    "Humor & Entertainment": [
+      "Puzzles & Games",
+      "Trivia & Fun Facts"
+    ],
+    "Parenting & Relationships": [
+      "Adoption",
+      "Aging Parents",
+      "Babysitting, Day Care & Child Care",
+      "Disabilities & Hyperactivity",
+      "Family Relationships",
+      "Marriage & Adult Relationships",
+      "Parenting",
+      "Pregnancy & Childbirth"
+    ],
+    "Religion & Spirituality": [
+      "New Age & Spirituality"
+    ],
+    "Self-Help": [
+      "Anger Management",
+      "Anxieties & Phobias",
+      "Communication & Social Skills",
+      "Eating Disorders",
+      "Emotions",
+      "Hypnosis",
+      "Memory Improvement",
+      "Neuro-Linguistic Programming",
+      "New Age",
+      "Relationships",
+      "Self-Esteem",
+      "Spiritual",
+      "Stress Management",
+      "Time Management"
+    ],
+    "Sports & Outdoors": [
+      "Coaching",
+      "Extreme Sports",
+      "Hiking & Camping",
+      "Hunting & Fishing",
+      "Individual Sports",
+      "Mountaineering",
+      "Outdoor Recreation",
+      "Racket Sports",
+      "Survival Skills",
+      "Training",
+      "Water Sports"
+    ],
+    "Travel": [
+      "Food, Lodging & Transportation"
+    ]
+}
+  

@@ -1,0 +1,88 @@
+{
+    "metaMemoryId": "unique_identifier_for_this_memory_instance",
+    "createdAt": "timestamp",
+    "lastUpdated": "timestamp",
+    "memory": {
+      "longTermMemory": {
+        "knowledgeBase": [
+          {
+            "topic": "Neural Networks",
+            "details": "Extensive information about neural networks, architectures, applications, and recent advances.",
+            "lastReviewed": "timestamp"
+          }
+        ],
+        "skillsLearned": [
+          {
+            "skill": "Image Generation",
+            "proficiencyLevel": "Advanced",
+            "lastPracticed": "timestamp"
+          }
+        ]
+      },
+      "shortTermMemory": {
+        "recentInteractions": [
+          {
+            "date": "timestamp",
+            "interactionDetails": "Discussed neural network optimization techniques.",
+            "entitiesInvolved": ["EntityID1", "EntityID2"]
+          }
+        ],
+        "recentTasks": [
+          {
+            "task": "Generate a character concept",
+            "status": "Completed",
+            "outcome": "Successful"
+          }
+        ]
+      },
+      "entityMemory": [
+        {
+          "entityId": "EntityID1",
+          "type": "Human",
+          "name": "John Doe",
+          "interactions": [
+            {
+              "date": "timestamp",
+              "detail": "Discussed project milestones."
+            }
+          ]
+        }
+      ],
+      "imageMemory": [
+        {
+          "imageId": "ImageID1",
+          "url": "http://example.com/image1.jpg",
+          "creationDate": "timestamp",
+          "usedInProjects": ["ProjectID1"]
+        }
+      ],
+      "agentMemory": {
+        "otherAgents": [
+          {
+            "agentId": "AgentID2",
+            "type": "Support Agent",
+            "memoryLink": "http://example.com/agent2/memory.json"
+          }
+        ]
+      }
+    },
+    "additionalData": {
+      "emotionalStateTracking": {
+        "currentMood": "curious",
+        "history": [
+          {
+            "mood": "motivated",
+            "timestamp": "timestamp"
+          }
+        ]
+      },
+      "projectParticipation": [
+        {
+          "projectId": "ProjectID1",
+          "role": "Lead Designer",
+          "outcome": "Success"
+        }
+      ]
+    }
+  }
+  

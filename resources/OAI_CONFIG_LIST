@@ -1,0 +1,11 @@
+[
+    {
+        "model": "gpt-4-1106-preview",
+        "api_key": "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"
+    },
+    {
+        "model": "ollama",
+        "api_key": "NULL",
+        "base_url": "http://0.0.0.0:8000 "
+    }
+]

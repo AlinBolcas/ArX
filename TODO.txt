@@ -1,0 +1,104 @@
+dynamic programming
+managers
+
+
+
+---
+
+
+
+---
+CMD+N - new discussion
+CMD+M - conversations map
+
+CMD+W - toggle mic input
+CMD+Q - toggle voice generation
+CMD+E - imagine based latest message
+CMD+R - retry imagining
+
+CMD+D - NOT generating 3D model from concept image YET
+CMD+Shift+D - Generating 3D Model from raw text
+CMD + B - Open Blender with 3D Models
+CMD+G - grouping past generated images in a moodboard
+CMD+U - User Settings (account, context, vault, hotkeys, settings)
+
+
+adding stopping to text
+saving images
+overwriting loading bar when generating images 
+adding voice - summary text generation
+adding function calling for image
+ability to modify the vertical split 
+google searching interface
+canvas chat with n parameter output options ? 
+add more steps visuals for image generation, prommpt, displaying to gui, etc
+
+
+---
+
+ 
+---
+
+impelement liteLLM for ollama and gpt wrapper
+OR langchain
+
+add appropriate system prompts
+
+---
+
+Implemenet memory maangement system
+
+---
+
+implement TTS of the generated text +  (streamed)
+
+add mute button
+
++ 
+
+SST Mic input
+
+---
+
+build consciousness swarm system
+
+---
+
+add dallee as generation without image source 
+
+implement 3d model gen
+
+---
+
+add function calling for:
+image gen, 3d model gen, 
+web link accessing
+image searching > image gen : 
+coding
+researching
+
+interface overhaull:
+
+"Found these images, built these images from them, heres's what i found about that, here's a 3d model"
+multiple views per outputs
+
+---
+
+add random question asking
+
+---
+
+add rationality tree of thought
+
+Knowledge Graph Readbility
+
+---
+
+Ambient sound generation
+
+--- 
+
+conversations history 
+> shown as list
+
+> shown as semantic node network, 
