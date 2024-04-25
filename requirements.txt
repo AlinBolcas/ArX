@@ -18,7 +18,10 @@ markdown
 customtkinter
 streamlit
 ollama
+
 networkx 
 matplotlib 
 numpy
 transformers
+torch
+scipy

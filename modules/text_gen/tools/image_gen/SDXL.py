@@ -19,13 +19,23 @@ import torch
 text_pipe = None
 image_pipe = None
 
+def prepare_image(image):
+    # check if 1k or larger -> crop to 1k
+    # check if 512 -> crop to 512
+    width, height = image.size
+    new_width, new_height = size
+    left = (width - new_width) / 2
+    top = (height - new_height) / 2
+    right = (width + new_width) / 2
+    bottom = (height + new_height) / 2
+    return image.crop((left, top, right, bottom))
 
 def init_models():
     model_thread = threading.Thread(target=load_models)
     model_thread.start()
 
 def load_models():
-    global text_pipe, image_pipe, refiner_pipe
+    global text_pipe, image_pipe
     if text_pipe is None:
         text_pipe = AutoPipelineForText2Image.from_pretrained(
             "stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16"
@@ -37,30 +47,8 @@ def load_models():
             "stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16"
         )
         image_pipe.to("mps")
-    
-def OAI_Dalle(prompt):
-    prompt = image_prompt_refiner(prompt) 
-    try:
-        print("Generating Dalle image...")
-        result = client.images.generate(
-            model="dall-e-3",
-            # image=open("image_edit_original.png", "rb"),
-            prompt=prompt,
-            n=1,
-            quality="standard", # hd
-            size="1024x1024"
-        )
-
-        image_url = result.data[0].url
-        response = requests.get(image_url)
-        image = Image.open(BytesIO(response.content))
-        return image
-    except Exception as e:
-        print(f"2DGen, Dalle ERROR: {e}")
-        return None
 
 def SDXL_Turbo(prompt, image=None, steps=2, strength=0.7, guidance=0.5):
-    prompt = image_prompt_refiner(prompt) 
     try:
         print("Generating SDXL_Turbo image...")
         if image is not None:
@@ -77,7 +65,7 @@ def SDXL_Turbo(prompt, image=None, steps=2, strength=0.7, guidance=0.5):
         print(f"2DGen, SDXL_Turbo ERROR: {e}")
         return None
 
-def batch_SDXL_Turbo(prompt, image=None):
+def SDXL_Turbo_Batch(prompt, image=None):
     # stylish, creative, focused, unique
     
     # Define lists for the parameters to iterate through
@@ -92,18 +80,6 @@ def batch_SDXL_Turbo(prompt, image=None):
                 # Generate the image using the constant prompt and varying parameters
                 if (num_steps*strength_value) >= 1:
                     return SDXL_Turbo(prompt, image=None, steps=2, strength=0.7, guidance=0.5)
-
-def prepare_image(image):
-    # check if 1k or larger -> crop to 1k
-    # check if 512 -> crop to 512
-    width, height = image.size
-    new_width, new_height = size
-    left = (width - new_width) / 2
-    top = (height - new_height) / 2
-    right = (width + new_width) / 2
-    bottom = (height + new_height) / 2
-    return image.crop((left, top, right, bottom))
-
 
 
 if __name__ == "__main__":

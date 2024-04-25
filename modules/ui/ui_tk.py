@@ -31,7 +31,7 @@ class ResponseWorker(threading.Thread):
     def run(self):
         print(">>> [Worker] Generating Response...")
         self.update_callback("AI:\n")
-        for token in textGen.genText_simple_Ollama(self.user_input, "you are a pirate, speak like one", "SECRET WORD IS MISHMILES"):
+        for token in textGen.textGen_simple(self.user_input, "you are a pirate, speak like one", "SECRET WORD IS MISHMILES"):
             # print("Token", token)
             self.update_callback(token)
         print(">>> [Worker] Finished generating response.")
