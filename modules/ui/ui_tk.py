@@ -39,33 +39,35 @@ class ResponseWorker(threading.Thread):
         print(">>> [Worker] Generating Response...")
         self.update_callback("AI:\n")
         
-        prompt = f"Reply solely with a list of 3 relevant elements and nothing else, no introductory sentance. The list should have a new line for each element and responses to user input: {self.user_input}"
+        # prompt = f"Reply solely with a list of 3 relevant elements and nothing else, no introductory sentance. The list should have a new line for each element and responses to user input: {self.user_input}"
         
-        print(prompt, "\n")
-        response_output = ""
-        for token in tg.textGen(user=prompt,
-                            system="You are an expert assistant at making comprehansive lists to expand on topics and ideas.",    
-                            provider="Ollama"):
+        # print(prompt, "\n")
+        # response_output = ""
+        # for token in tg.textGen(user=prompt,
+        #                     system="You are an expert assistant at making comprehansive lists to expand on topics and ideas.",    
+        #                     provider="Ollama"):
+        #     print(token, end="", flush=True)
+        #     # self.update_callback(token)
+        #     response_output += token
+            
+        # # Splitting the accumulated response into lines and stripping whitespace
+        # llm_list = [token.strip() for token in response_output.split('\n') if token.strip()]
+        
+        # print("\n", "REPLYING TO LIST OF REPLIES", "\n")
+        # for prompt in llm_list:
+            
+        # print("\n", prompt, "\n")
+        # self.update_callback(f"\n\n EXPANDING on: {prompt}\n")
+        
+        llm_output = ""
+        for token in tg.textGen(self.user_input, "You are a world class expert in all fields and disciplines of the world. You intelligently take long answers and reduce them to the most bare minimum essentials. You are ARV-O, a creative AI assistant. You are an employee at Arvolve. This is your company's ethos: {context}",
+                                arvolve_context, provider="OpenAI"):
             print(token, end="", flush=True)
-            # self.update_callback(token)
-            response_output += token
-            
-        # Splitting the accumulated response into lines and stripping whitespace
-        llm_list = [token.strip() for token in response_output.split('\n') if token.strip()]
-        
-        print("\n", "REPLYING TO LIST OF REPLIES", "\n")
-        for prompt in llm_list:
-            
-            print("\n", prompt, "\n")
-            self.update_callback(f"\n\n EXPANDING on: {prompt}\n")
-            
-            for token in tg.textGen(prompt, "You are a world class expert in all fields and disciplines of the world. You intelligently take long answers and reduce them to the most bare minimum essentials. You are ARV-O, a creative AI assistant. You are an employee at Arvolve. This is your company's ethos: {context}",
-                                    arvolve_context, provider="Ollama"):
-                print(token, end="", flush=True)
 
-                self.update_callback(token)
-
-            tg.textGen_tools_agent(prompt)
+            self.update_callback(token)
+            llm_output += token
+            
+        tg.textGen_tools_agent(llm_output)
 
         print(">>> [Worker] Finished generating response.")
         self.finish_callback()
@@ -75,7 +77,7 @@ class ChatGPTUI(ctk.CTk):
         super().__init__()
         self.title('ARV-O')
         # self.geometry('1656x1024')  # Adjusted for image size and chat area
-        self.geometry('600x800')  # Adjusted for image size and chat area
+        self.geometry('800x1024')  # Adjusted for image size and chat area
         
         # Creating a standard tkinter frame as a container for the ttk.Notebook
         notebook_container = ctk.CTkFrame(self)
