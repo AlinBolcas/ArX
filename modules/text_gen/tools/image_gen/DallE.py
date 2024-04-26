@@ -1,4 +1,4 @@
-import os
+import os, re
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,7 +10,16 @@ client = OpenAI()
 from PIL import Image
 import requests
 from io import BytesIO
+
+import sys
 from pathlib import Path
+
+# Calculate the project root (which is three directories up from this file)
+project_root = Path(__file__).resolve().parents[3]
+print("Project root:", project_root, "\n", "File root: ", Path(__file__).resolve())
+sys.path.append(str(project_root))
+
+# from modules.aux.utils import extract_prompt
 
 
 def display_image(image_url):
@@ -31,6 +40,17 @@ def save_image(image_url, file_path):
     img = Image.open(BytesIO(response.content))
     img.save(file_path)
     print(f">>> Image saved to {file_path}")
+
+def extracting_image_name(prompt, max_length=50):
+    # Replace white spaces with underscores
+    image_name = prompt.replace(" ", "_")
+    # Remove characters not allowed in a filename by convention
+    image_name = re.sub(r'[^\w\-_.]', '', image_name)
+    # Limit the name to the specified maximum length
+    image_name = image_name[:max_length]
+    # Convert the name to lowercase
+    image_name = image_name.lower()
+    return image_name
 
 def imageGen_Dalle(prompt):
     try:
@@ -61,10 +81,13 @@ if __name__ == "__main__":
 
     # Generate the image using Dalle
     image_url = imageGen_Dalle(prompt)
+    
     if image_url:
+        image_name = extracting_image_name(prompt)
+        
         # Display the generated image
         display_image(image_url)
         
         # Save the image to a file
-        save_path = "generated_image.jpg"
+        save_path = f"{image_name}.jpg"
         save_image(image_url, save_path)

@@ -14,11 +14,18 @@ print("Project root:", project_root, "\n", "File root: ", Path(__file__).resolve
 sys.path.append(str(project_root))
 
 
-from modules.text_gen import textGen
+from modules.text_gen import textGen as tg
 from modules.ui import map
 
 ctk.set_appearance_mode("dark")  # Modes: system (default), light, dark
 ctk.set_default_color_theme("blue") # Themes: blue (default), dark-blue, green
+
+
+
+# TEMP
+arvolve_context = """
+Arvolve stands at the forefront of blending artistic creativity with cutting-edge technology, pioneering the evolution of art through advanced 3D CGI and VFX productions. Founded by Alin Bolcas, a visionary artist and technologist, the company excels in character concept design, crafting mesmerizing visuals that captivate global audiences. Arvolve's commitment to innovation extends into the realm of artificial intelligence, where it develops ARV-O, a multimodal AI system inspired by human cognition. This system enhances artistic workflows, facilitates creative ideation, and fosters a deeper exploration of AI's potential in arts and consciousness. With a robust portfolio of high-profile projects and a dynamic approach to AI and CGI integration, Arvolve is dedicated to redefining creative expression and advancing humanity through its pioneering work.
+""" 
 
 class ResponseWorker(threading.Thread):
     def __init__(self, user_input, update_callback, finish_callback):
@@ -31,9 +38,35 @@ class ResponseWorker(threading.Thread):
     def run(self):
         print(">>> [Worker] Generating Response...")
         self.update_callback("AI:\n")
-        for token in textGen.textGen_simple(self.user_input, "you are a pirate, speak like one", "SECRET WORD IS MISHMILES"):
-            # print("Token", token)
-            self.update_callback(token)
+        
+        prompt = f"Reply solely with a list of 3 relevant elements and nothing else, no introductory sentance. The list should have a new line for each element and responses to user input: {self.user_input}"
+        
+        print(prompt, "\n")
+        response_output = ""
+        for token in tg.textGen(user=prompt,
+                            system="You are an expert assistant at making comprehansive lists to expand on topics and ideas.",    
+                            provider="Ollama"):
+            print(token, end="", flush=True)
+            # self.update_callback(token)
+            response_output += token
+            
+        # Splitting the accumulated response into lines and stripping whitespace
+        llm_list = [token.strip() for token in response_output.split('\n') if token.strip()]
+        
+        print("\n", "REPLYING TO LIST OF REPLIES", "\n")
+        for prompt in llm_list:
+            
+            print("\n", prompt, "\n")
+            self.update_callback(f"\n\n EXPANDING on: {prompt}\n")
+            
+            for token in tg.textGen(prompt, "You are a world class expert in all fields and disciplines of the world. You intelligently take long answers and reduce them to the most bare minimum essentials. You are ARV-O, a creative AI assistant. You are an employee at Arvolve. This is your company's ethos: {context}",
+                                    arvolve_context, provider="Ollama"):
+                print(token, end="", flush=True)
+
+                self.update_callback(token)
+
+            tg.textGen_tools_agent(prompt)
+
         print(">>> [Worker] Finished generating response.")
         self.finish_callback()
 
@@ -41,8 +74,9 @@ class ChatGPTUI(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title('ARV-O')
-        self.geometry('1656x1024')  # Adjusted for image size and chat area
-
+        # self.geometry('1656x1024')  # Adjusted for image size and chat area
+        self.geometry('600x800')  # Adjusted for image size and chat area
+        
         # Creating a standard tkinter frame as a container for the ttk.Notebook
         notebook_container = ctk.CTkFrame(self)
         notebook_container.pack(fill='both', expand=True, padx=20, pady=20)
@@ -78,9 +112,13 @@ class ChatGPTUI(ctk.CTk):
         self.main_frame = ctk.CTkFrame(self.container, width=800)
         self.main_frame.pack(side='left', fill='both', expand=True)
 
-        # Adjusting the image frame to accommodate 1024x1024 images
-        self.image_frame = ctk.CTkFrame(self.container, width=1024, height=1024)
-        self.image_frame.pack(side='right', fill='both', expand=True)
+        # # Adjusting the image frame to accommodate 1024x1024 images
+        # self.image_frame = ctk.CTkFrame(self.container, width=1024, height=1024)
+        # self.image_frame.pack(side='right', fill='both', expand=True)
+
+        # # Image label with black background as default
+        # self.image_label = ctk.CTkLabel(self.image_frame, width=1024, height=1024, bg_color='#2c2f33')
+        # self.image_label.pack(fill='both', expand=True)
 
         self.conversation_display = ctk.CTkTextbox(self.main_frame, state='disabled', width=780, height=540)
         self.conversation_display.pack(fill='both', expand=True)
@@ -93,10 +131,7 @@ class ChatGPTUI(ctk.CTk):
         self.input_field.bind('<Return>', self.enter_press)
         self.input_field.bind('<Shift-Return>', self.insert_newline)
 
-        # Image label with black background as default
-        self.image_label = ctk.CTkLabel(self.image_frame, width=1024, height=1024, bg_color='#2c2f33')
-        self.image_label.pack(fill='both', expand=True)
-        
+
         return interface_tab
 
     def setup_settings_tab(self):
