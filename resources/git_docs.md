@@ -1,3 +1,10 @@
+git status
+git add .
+git rm -f --cached src/local_models/shap-e
+git remote add origin git@github.com:AlinBolcas/ARV-0.git
+git commit -m "Your commit message"
+
+
 Certainly! Here's a comprehensive guide to frequently used Git commands and operations that will help you manage your GitHub repositories effectively. This guide covers initialization, branching, committing changes, working with remotes, handling SSH keys, and more. You can save these commands for future reference.
 
 ### Setting Up and Initializing Repositories

@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 # Calculate the project root (which is three directories up from this file)
-project_root = Path(__file__).resolve().parents[3]
+project_root = Path(__file__).resolve().parents[4]
 print("Project root:", project_root, "\n", "File root: ", Path(__file__).resolve())
 sys.path.append(str(project_root))
 
