@@ -36,6 +36,9 @@ def display_image(image_url):
     print(">>> Image displayed!")
 
 def save_image(image_url, file_path):
+    # Ensure the directory exists before trying to save the file
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Add this line
+
     response = requests.get(image_url)
     img = Image.open(BytesIO(response.content))
     img.save(file_path)
@@ -73,21 +76,18 @@ def imageGen_Dalle(prompt):
     except Exception as e:
         print(f"2DGen, Dalle ERROR: {e}")
         return None
-    
+
+def imageGen_fullPipeline(prompt):
+    img_url = imageGen_Dalle(prompt)
+    image_name = extracting_image_name(prompt)
+    save_path = project_root / f"output/images/{image_name}.jpg"
+    save_image(img_url, save_path)
+    print("\n>>> Generated Image succesfully...")
+    return save_path
+
 # MAIN
 if __name__ == "__main__":
     # Define the prompt for image generation
     prompt = "An imaginative landscape with floating islands and waterfalls"
 
-    # Generate the image using Dalle
-    image_url = imageGen_Dalle(prompt)
-    
-    if image_url:
-        image_name = extracting_image_name(prompt)
-        
-        # Display the generated image
-        display_image(image_url)
-        
-        # Save the image to a file
-        save_path = f"{image_name}.jpg"
-        save_image(image_url, save_path)
+    imageGen_fullPipeline(prompt)
