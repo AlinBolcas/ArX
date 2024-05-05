@@ -1,0 +1,54 @@
+{
+    "LLM": {
+        "Ollama": [
+            "llama3",
+            "dolphin-llama3",
+            "llama2-uncensored",
+            "phi3",
+            "gemma",
+            "stablelm2",
+            "all-minilm",
+            "tinydolphin",
+            "nexusraven",
+            "magicoder",
+            "codellama",
+            "stable-code",
+            "wizard-math",
+            "bakllava",
+            "moondream"
+        ],
+        "OpenAI": [
+            "gpt-4-turbo",
+            "gpt-3.5-turbo"
+        ]
+    },
+    "IMG": {
+        "OpenAI": [
+            "dall-e-2",
+            "dall-e-1"
+        ],
+        "Stability AI": [
+            "SD-turbo",
+            "SDXL"
+        ]
+    },
+    "MSC": {
+        "OpenAI": [
+            "jukebox-1"
+        ]
+    },
+    "TTS": {
+        "OpenAI": [
+            "echo",
+            "onyx",
+            "etc"
+        ],
+        "IBM": [
+            "ibm-watson-tts"
+        ],
+        "suno-bark": [
+            "suno-bark-1",
+            "suno-bark-2"
+        ]
+    }
+}

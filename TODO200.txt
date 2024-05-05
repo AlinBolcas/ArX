@@ -1,0 +1,24 @@
+IMAGE GENERATION UNIQUE ID + NAME DATE TIME for arrow keyys cycling and displaying as they are finiehd
+-> add summariser for tts
+
+- knowledge and conversation storage
+- agents committie thing
+
+- web access & rag tools from knowledge
+
+
+- Notion API - > Obsidian
+
+- desktop automations frameworks -> youtube video -> transcripts -> RAG
+
+- twitter API >> my profile -> rag & refinements -> personal clone
+
+- voice cloning 
+
+-
+
+- SYSTEM PROMPT GEN! to self create itself
+
+- self awareness - Context of its own system - > think throigh context management:
+context_self, context_world, context_system, context_query 
+knowledge graph, entity, memory buffer

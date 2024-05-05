@@ -1,0 +1,15 @@
+FOR CODING PROMPT:
+i dont understand.. 
+simplifty the response and and exact snippet to copy and paste and where:
+FULL CODE, Brief explanatiion.
+-- RAG to all existing code
+-- knowledge graph of parsed of the system logic (vision?)
+
+-REACT (Agents?)
+
+LOOP:
+-- planning
+-- coder
+-- reflection
+>> check
+iterate/final output

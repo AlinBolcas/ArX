@@ -2,7 +2,6 @@ import json
 import os
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-from utils import output_dir
 from modules.tools.text_gen.arx_textGen import librarian, simple_thought
 
 class Knowledge:
@@ -106,13 +105,12 @@ class Knowledge:
 
 # ---------------------------------------------------------
 # main for debugging
-# ---------------------------------------------------------
 
-def main():
-    knowledge_base = Knowledge()  # Automatically loads existing data if present
+if __name__ == "__main__":
+    
+    knwoledge = Knowledge()  # Automatically loads existing data if present
 
-    output_dir()
-    knowledge_base.reboot_knowledge()  # Uncomment to reset the knowledge base
+    knwoledge.reboot_knowledge()  # Uncomment to reset the knowledge base
     
     user_prompts = [
         "Hi, I'm Alin and I like art, ice skating, and katanas.",
@@ -128,13 +126,10 @@ def main():
         
         print(f"user: {prompt}")
         
-        knowledge_base.update_active_memory("user", prompt)
+        knwoledge.save_active_memory("user", prompt)
 
-        chat_history = knowledge_base.get_latest_interactions()
+        chat_history = knwoledge.get_latest_interactions()
         response = simple_thought(prompt, chat_history)
         print(f"arx: {response}\n")
 
         knowledge_base.update_active_memory("arx", response)
-
-if __name__ == "__main__":
-    main()

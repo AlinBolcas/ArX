@@ -1,10 +1,49 @@
-dynamic programming
+Add readme
+
+dynamic programming {?}
 managers
 
+json settings - UI
 
+concatenating repo into one for RAG - self awareness
+---
+Knowledge:
+- agents memory buffer (short time),
+- working memory (all interchange)
+- system wode memory (long term)
 
+Web Retrival, Web Crawling - Full Research
+
+Mic input > SST  as input
+
+Impelment multi conversation map & switcher 
+(history of each conversation stored)
 ---
 
+UI revamp for dynamic interaction - tab pop ups?
+
+Music Gen
+
+3d model gen
+
+Agentic Swarm: Company Swarm, Psychological Simulation
+
+Coding centre - Factory > tailored for code generation
+
+Paintover for dynamic 2d image generation
+
+Advanced Knowledge Graph - system 2 thinking
+
+Other Bespoke tools for additional
+
+Emotional centre + sentiment analysis (influencing generation, response, tts)
+
+Creativity (prompting for now), 
+Rationality (knowledge graph), 
+World Model (prompting tied to knowledge)
+
+---
+---
 
 
 ---

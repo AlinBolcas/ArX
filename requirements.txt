@@ -28,3 +28,11 @@ scipy
 
 playsound
 PyObjC
+pyaudio
+pydub
+pvporcupine
+pvcobra
+noisereduce
+
+imageio
+# SpeechRecognition
